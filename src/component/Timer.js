@@ -49,7 +49,10 @@ function Timer() {
 
     const complete = async () => {
         try {
-            const response = await axios.post(`${URL}/complete`);
+            const reqBody={
+                repo:repoName,
+            }
+            const response = await axios.post(`${URL}/complete`,reqBody);
             setEndTime(new Date(response.data.assessment_end_time));
             clearInterval(intervalId);
         } catch (err) {
